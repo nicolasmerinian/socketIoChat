@@ -19,6 +19,10 @@ socket.on('chat-message', function (message) {
   $('#messages').append($('<li>').html('<span class="username">' + message.username + '</span> ' + message.text));
 });
 
+socket.on('service-message', function (message) {  
+  $('#messages').append($('<li class="' + message.type + '">').html('<span class="info">information</span> ' + message.text));
+});
+
 $('#login form').submit(function (e) {
   e.preventDefault();
   var user = {
