@@ -15,14 +15,23 @@ http.listen(3000, function(){
 
 io.on('connection', function(socket) {
 	
+  var loggedUser;
+	
   console.log('a user connected');
   socket.on('disconnect', function() {
     console.log('user disconnected');
   });
   
   socket.on('chat-message', function (message) {
+	message.username = loggedUser.username;
+	console.log('Message de : ' + loggedUser.username);
     console.log('message : ' + message.text);
     io.emit('chat-message', message);
+  });
+  
+  socket.on('user-login', function (user) {
+    console.log('user logged in : ' + user.username);
+    loggedUser = user;
   });
   
 });

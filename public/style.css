@@ -93,3 +93,12 @@ section#login button {
     margin-top: 20px;
     cursor: pointer;
 }
+
+section#chat #messages li span.username {  
+    display: inline-block;
+    padding: 6px 10px;
+    margin-right: 5px;
+    color: white;
+    background: #e67e22;
+    border-radius: 5px;
+}
