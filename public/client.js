@@ -14,3 +14,7 @@ $('form').submit(function(e) {
     $('#m').val(''); 
     $('#chat input').focus();
 });
+
+socket.on('chat-message', function (message) {
+  $('#messages').append($('<li>').text(message.text));
+});
