@@ -15,12 +15,14 @@ $('form').submit(function(e) {
      focusInputMessage();
 });
 
-socket.on('chat-message', function (message) {
+socket.on('chat-message', function (message) {  
   $('#messages').append($('<li>').html('<span class="username">' + message.username + '</span> ' + message.text));
+  scrollToBottom();
 });
 
 socket.on('service-message', function (message) {  
   $('#messages').append($('<li class="' + message.type + '">').html('<span class="info">information</span> ' + message.text));
+  scrollToBottom();
 });
 
 $('#login form').submit(function (e) {
@@ -46,3 +48,10 @@ function focusInputMessage() {
 function emptyInputMessage() {
 	$('#m').val('');
 }
+
+function scrollToBottom() {  
+  if ($(window).scrollTop() + $(window).height() + 2 * $('#messages li').last().outerHeight() >= $(document).height()) {
+    $("html, body").animate({ scrollTop: $(document).height() }, 0);
+  }
+}
+

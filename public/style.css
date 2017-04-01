@@ -120,4 +120,9 @@ section#chat #messages li span.info {
     border-radius: 5px;
 }
 
-
+section#chat #messages {  
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 50px;
+}
